@@ -6,7 +6,10 @@ li{list-style-type:none;}
 
 /* 📌[TIME SLIDER] */
 .time-slider-wrap{
-    --gap:30px;
+    --gap:10px;
+    --time-ing:3s;
+    --time-end:1s;
+    --time-end-delay:.5s;
     position:relative;
     width:100vmin; aspect-ratio:2/1;
     margin:0 auto;
@@ -40,7 +43,7 @@ li{list-style-type:none;}
     gap:10px;
     position:absolute;
     left:0;bottom:0;
-    padding:calc(var(--gap) / 3) calc(var(--gap) / 2);
+    padding:var(--gap) calc(var(--gap) + var(--gap)/ 2);
     background:rgba(0,0,0,.5);
     font-size:20px; color:#fff;
 }
@@ -59,11 +62,11 @@ li{list-style-type:none;}
 }
 
 .time-slider-time-bar.ing{
-    animation: timebarIng 3s linear both;
+    animation: timebarIng var(--time-ing) linear both;
 }
 
 .time-slider-time-bar.end{
-    animation: timebarEnd 1s .5s ease-out both;
+    animation: timebarEnd var(--time-end) var(--time-end-delay) ease-out both;
 }
 
 @keyframes timebarIng {
