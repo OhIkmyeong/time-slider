@@ -1,0 +1,76 @@
+@charset "utf-8";
+*{margin:0;padding:0;box-sizing:border-box;}
+li{list-style-type:none;}
+
+
+
+/* 📌[TIME SLIDER] */
+.time-slider-wrap{
+    --gap:30px;
+    position:relative;
+    width:100vmin; aspect-ratio:2/1;
+    margin:0 auto;
+    border:1px solid black;
+}
+.time-slider{
+    position:relative; overflow:hidden;
+    width:100%; height:100%;
+}
+
+.time-slider-item{
+    display:flex; flex-flow:row wrap;
+    justify-content:center;align-items:center;
+    position:absolute;
+    top:0;left:0;
+    width:100%;height:100%;
+    background:var(--bg-color);
+    font-size:10vmin;
+    transition:opacity .3s .1s;
+}
+    /* on */
+    .time-slider-item.off{
+        opacity:0;
+        pointer-events:none;
+    }
+
+/* 타이머 */
+.time-slider-time-wrap{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    position:absolute;
+    left:0;bottom:0;
+    padding:calc(var(--gap) / 3) calc(var(--gap) / 2);
+    background:rgba(0,0,0,.5);
+    font-size:20px; color:#fff;
+}
+
+.time-slider-time-bar-wrap{
+    position:relative; overflow:hidden;
+    width:150px; height:8px;
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(0,0,0,.1);
+}
+.time-slider-time-bar{
+    position:relative;
+    width:100%;height:100%;
+    background:rgb(255,255,255);
+    transform:translateX(calc(-100% + 1px));
+}
+
+.time-slider-time-bar.ing{
+    animation: timebarIng 3s linear both;
+}
+
+.time-slider-time-bar.end{
+    animation: timebarEnd 1s .5s ease-out both;
+}
+
+@keyframes timebarIng {
+    to{transform:translateX(0);}
+}
+
+@keyframes timebarEnd {
+    from{transform:translateX(0);}
+    to{transform:translateX(100%);}
+}
